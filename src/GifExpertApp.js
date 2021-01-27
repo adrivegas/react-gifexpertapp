@@ -5,16 +5,10 @@ export const GifExpertApp = () => {
 
     const [categories, setCategories] = useState(['Gamora', 'Iron Man', 'Thor']);
 
-    const handleAdd = () => {
-        // setCategories([...categories, 'Visión']);
-        // También lo puedo hacer con un callback, devolviendo un nuevo arreglo con todas las categorías
-        setCategories(cats => [...cats, 'Visión']); 
-    };
-
     return (
-        <div>
+        <>
             <h2>GifExpertApp</h2>
-            <AddCategory />
+            <AddCategory setCategories= { setCategories } />
             <hr/>
 
             <ol>
@@ -24,6 +18,6 @@ export const GifExpertApp = () => {
                     })
                 }
             </ol>
-        </div>
+        </>
     )
 }

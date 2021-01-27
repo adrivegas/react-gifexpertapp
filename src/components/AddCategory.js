@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export const AddCategory = () => {
+export const AddCategory = ({ setCategories }) => {
 
-    const [inputValue, setInputValue] = useState('Hola Adri')
+    const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = ( e ) => {
         setInputValue( e.target.value );
@@ -10,7 +11,11 @@ export const AddCategory = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // previene el comportamiento por defecto del formulario (refresh navegador)
-        console.log('Submit ok');
+
+        if ( inputValue.trim().length > 2 ) {
+            setCategories(cats => [...cats, inputValue]);
+            setInputValue(''); // Borra el valor del input para que no pueda hacer un doble posteo
+        }         
     }
 
     return (
@@ -22,4 +27,9 @@ export const AddCategory = () => {
             />
         </form>
     )
+   
+}
+
+AddCategory.propTypes = {
+    setCategories: PropTypes.func.isRequired
 }
