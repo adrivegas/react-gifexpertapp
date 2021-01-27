@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 export const GifGrid = ( { category } ) => {
+
+    const [count, setCount] = useState(0);
+
+    // con [] useEffect solo se va a disparar una vez
+    // solo se ejecuta getGifs() cuando el componente es renderizado por primera vez
+
+    useEffect(() => {
+        getGifs();
+    }, []);
 
     const getGifs = async() => {
 
@@ -17,15 +26,18 @@ export const GifGrid = ( { category } ) => {
             }
         })
 
-        console.log(data);
         console.log(gifs);
 
     }
-    getGifs();
+    // getGifs();
 
     return (
         <div>
-            <h3> {category} </h3>
+            <h3> { category} </h3>
+            <h3> { count } </h3>
+            <button onClick={ () => setCount( count + 1 )}></button>
+            {/* cada vez que hago click react vuelve a ejecutar todo el componente porque detecta un cambio
+             por eso usamos useEffect para que getGifs se ejecute solo una vez*/}
         </div>
     )
 }
