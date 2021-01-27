@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import { AddCategory } from './components/AddCategory';
 
 export const GifExpertApp = () => {
 
-    // const categories = ['Gamora', 'Iron Man', 'Thor']. *****Así no se debe hacer****
     const [categories, setCategories] = useState(['Gamora', 'Iron Man', 'Thor']);
 
-    // ... con el operador spread mantengo las categorías anteriores y agrego una nueva
     const handleAdd = () => {
         // setCategories([...categories, 'Visión']);
         // También lo puedo hacer con un callback, devolviendo un nuevo arreglo con todas las categorías
@@ -15,9 +14,8 @@ export const GifExpertApp = () => {
     return (
         <div>
             <h2>GifExpertApp</h2>
+            <AddCategory />
             <hr/>
-
-            <button onClick= { handleAdd }>Agregar</button>
 
             <ol>
                 {
