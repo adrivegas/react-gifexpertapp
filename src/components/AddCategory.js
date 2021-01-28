@@ -13,7 +13,7 @@ export const AddCategory = ({ setCategories }) => {
         e.preventDefault(); // previene el comportamiento por defecto del formulario (refresh navegador)
 
         if ( inputValue.trim().length > 2 ) {
-            setCategories(cats => [...cats, inputValue]);
+            setCategories(cats => [ inputValue, ...cats ]); // cambiamos el orden para que primero inserte la nueva y luego las anteriores
             setInputValue(''); // Borra el valor del input para que no pueda hacer un doble posteo
         }         
     }
