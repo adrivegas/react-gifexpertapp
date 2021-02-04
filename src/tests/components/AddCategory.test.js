@@ -31,6 +31,19 @@ describe('Pruebas en <AddCategory />', () => {
         
         wrapper.find('form').simulate('submit', { preventDefault(){} }); // simulación del submit del formulario
         expect( setCategories ).not.toHaveBeenCalled();
-    })       
+    }) 
+    
+    test('debe llamar el setCategories y limpiar la caja de texto', () => {
+
+        const value = 'Adriana Venegas';
+
+        wrapper.find('input').simulate('change', { target: { value }}); // simulación del onChange del formulario
+        wrapper.find('form').simulate('submit', { preventDefault(){} }); // simulación del submit del formulario
+        expect( setCategories ).toHaveBeenCalled(); // se debe haber llamado setCategories
+        expect( setCategories ).toHaveBeenCalledWith( expect.any(Function) ); // se debe haber llamado setCategories con cualquier tipo de función
+        expect( wrapper.find('input').prop('value') ).toBe(''); // el valor del input debe estar ''
+        
+    })
+    
     
 })
