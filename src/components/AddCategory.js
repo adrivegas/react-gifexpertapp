@@ -12,6 +12,8 @@ export const AddCategory = ({ setCategories }) => {
     const handleSubmit = (e) => {
         e.preventDefault(); // previene el comportamiento por defecto del formulario (refresh navegador)
 
+        console.log('handleSubmit', inputValue);
+
         if ( inputValue.trim().length > 2 ) {
             setCategories(cats => [ inputValue, ...cats ]); // cambiamos el orden para que primero inserte la nueva y luego las anteriores
             setInputValue(''); // Borra el valor del input para que no pueda hacer un doble posteo
