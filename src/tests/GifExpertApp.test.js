@@ -18,8 +18,6 @@ describe('Pruebas en el componente <GifExpertApp />', () => {
         expect( wrapper ).toMatchSnapshot();
         expect( wrapper.find('GifGrid').length ).toBe( categories.length );
 
-    })
-    
-    
+    })  
     
 })
